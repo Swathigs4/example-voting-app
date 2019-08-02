@@ -7,6 +7,9 @@ pipeline{
     stages{
         stage(build)
         {
+	when{
+		changeset "**/worker/**"
+	}
              steps
              {
 		dir('worker'){
@@ -25,6 +28,9 @@ pipeline{
         }
         stage(package)
         {
+	when{
+		branch 'master'
+	}
              steps
              {
                 dir('worker'){
